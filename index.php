@@ -100,6 +100,8 @@ include("nav.php") ;
          </section>
          <!-- end slider section -->
       </div>
+
+
       <!-- why section -->
       <section class="why_section layout_padding">
          <div class="container">
@@ -191,7 +193,7 @@ include("nav.php") ;
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1">
+                           <a href="Categories.php" class="option1">
                            pendant lamp
                            </a>
          
@@ -209,7 +211,7 @@ include("nav.php") ;
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1">
+                           <a href="Categories.php" class="option1">
                            Wall and Mirror Lamps
                            </a>
                           
@@ -227,7 +229,7 @@ include("nav.php") ;
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1">
+                           <a href="Categories.php" class="option1">
                            LED Lighting Strips
                            </a>
                            
@@ -245,7 +247,7 @@ include("nav.php") ;
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1">
+                           <a href="Categories.php" class="option1">
                            Floor and Task Lamps
                            </a>
                            
@@ -283,23 +285,25 @@ include("nav.php") ;
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1">
+                           <a href="viewproduct.php" class="option1">
                            View Product
                            </a>
 
                         </div>
                      </div>
                      <div class="img-box">
-                        <img src="images/p1.png" alt="">
+                        <img src="Images/ProductsImages/1.png" alt="">
                      </div>
                      <div class="detail-box">
                         <h5>
-                           Men's Shirt
+                        Pendant lamp shade, smoked, 30 cm
                         </h5>
-                        <h6>
-                           $75
-                        </h6>
                      </div>
+                        <h6 class="sale">
+                          <del> <strong> 25 JD</strong> </del>
+                          <br>
+                         <ins> <strong> 20 JD</strong> </ins>
+                        </h6>
                   </div>
                </div>
 
@@ -308,23 +312,25 @@ include("nav.php") ;
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1">
+                           <a href="viewproduct.php" class="option1">
                            View Product
                            </a>
                           
                         </div>
                      </div>
                      <div class="img-box">
-                        <img src="images/p2.png" alt="">
+                        <img src="images/ProductsImages/6.png" alt="">
                      </div>
                      <div class="detail-box">
                         <h5>
-                           Men's Shirt
+                        Pendant lamp, black, 20 cm
                         </h5>
-                        <h6>
-                           $80
-                        </h6>
                      </div>
+                     <h6 class="sale">
+                          <del> <strong> 16 JD</strong> </del>
+                          <br>
+                         <ins> <strong> 16 JD</strong> </ins>
+                        </h6>
                   </div>
                </div>
 
@@ -333,23 +339,25 @@ include("nav.php") ;
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1">
+                           <a href="viewproduct.php" class="option1">
                            View Product
                            </a>
                            
                         </div>
                      </div>
                      <div class="img-box">
-                        <img src="images/p3.png" alt="">
+                        <img src="images/productsImages/8.png" alt="">
                      </div>
                      <div class="detail-box">
                         <h5>
-                           Women's Dress
+                        Pendant lamp with 4 lamps, black
                         </h5>
-                        <h6>
-                           $68
-                        </h6>
                      </div>
+                     <h6 class="sale">
+                          <del> <strong> 139 JD</strong> </del>
+                          <br>
+                         <ins> <strong> 139 JD</strong> </ins>
+                        </h6>
                   </div>
                </div>
 
@@ -358,36 +366,40 @@ include("nav.php") ;
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1">
+                           <a href="viewproduct.php" class="option1">
                            View Product
                            </a>
                            
                         </div>
                      </div>
                      <div class="img-box">
-                        <img src="images/p4.png" alt="">
+                        <img src="images/productsImages/17.png" alt="">
                      </div>
                      <div class="detail-box">
                         <h5>
-                           Women's Dress
+                        LED lighting strip, multicolour, 1 m
                         </h5>
-                        <h6>
-                           $70
-                        </h6>
-                        <span>
-                           $70
-                        </span>
                      </div>
+                     <h6 class="sale">
+                          <del> <strong> 7 JD</strong> </del>
+                          <br>
+                         <ins> <strong> 7 JD</strong> </ins>
+                        </h6>
                   </div>
                </div>
 
 
             </div>
             <div class="btn-box">
-               <a href="">
+               <a href="products.php">
                View All products
                </a>
             </div>
+
+
+
+
+            
          </div>
       </section>
       <!-- end product section -->
@@ -455,4 +467,10 @@ include("nav.php") ;
     <!-- end slider 2 -->
 
    
+    <?php
+
+include("footer.php") ;
+
+?>
+
 
