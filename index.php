@@ -306,8 +306,8 @@ include("nav.php") ;
 
 
       
-      <!-- product section -->
-      <section class="product_section layout_padding">
+      <!-- Discount section -->
+      <!-- <section class="product_section layout_padding">
          <div class="container">
             <div class="heading_container heading_center">
                <h2>
@@ -438,8 +438,83 @@ include("nav.php") ;
 
 
          </div>
+      </section> -->
+      <!-- end Discount section -->
+
+
+
+
+      <!-- Discount section -->
+      <section class="product_section layout_padding">
+         <div class="container">
+            <div class="heading_container heading_center">
+               <h2>
+               Discount <span> Section</span>
+               </h2>
+            </div>
+
+            <div class="row">
+
+
+            <?php
+            $query = "SELECT * FROM products  WHERE sale_status = 1 LIMIT 4 ;";
+            $result = mysqli_query($conn, $query);
+            $resultcheck = mysqli_num_rows($result);
+            if ($resultcheck > 0) {
+
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $pbs = ($row['price']) * ((100 - $row['sale_pre']) / 100);
+
+                    echo '
+                    <div class="col-sm-6 col-md-3 col-lg-3">
+                         <div class="box">
+                             <div class="option_container">
+                                   <div class="options">
+                             <a href="cart.php?pro_id=' . $row['id']  . ' " class="option1">
+                                               Add To Cart
+                                               </a>
+                                  <a href="viewproduct.php?view_id=' . $row["id"] . ' " class="option2">
+                                              View Product
+                                             </a>
+
+                                            </div>
+                                       </div>
+                                        <div class="img-box">
+                                       <img src=" ' . $row["image"] . '" alt="">
+                                      </div>
+                                      <div class="detail-box">
+                               <h5>
+                               ' . $row["name"] . '
+                                                 </h5>
+                                               </div>
+                                           <h6 class="sale">
+                                       <del> <strong> ' . floor($row["price"]) . '  JD' . ' </strong> </del>
+                                      <br>
+                                           <ins> <strong> '  .  $pbs . '  JD' . ' </strong> </ins>
+                                            </h6>
+                                              </div>
+                                             </div>
+                        
+                        ';
+
+
+
+                }}
+?>
+                </div>
+            <div class="btn-box">
+               <a href="products.php">
+               View All products
+               </a>
+            </div>
+
+
+
+
+
+         </div>
       </section>
-      <!-- end product section -->
+      <!-- end Discount section -->
 
    
 

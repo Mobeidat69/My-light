@@ -41,7 +41,7 @@ include("connect.php");
 
    include("nav.php");
    $view_id = $_GET['view_id'];
-   echo $view_id;
+   // echo $view_id;
    ?>
 
 
