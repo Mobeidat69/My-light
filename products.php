@@ -78,18 +78,22 @@ include("nav.php") ;
             $result = mysqli_query($conn, $query);
             $resultcheck = mysqli_num_rows($result);
             if ($resultcheck > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                  if ( $row["sale_status"] == 1 ) {
-                    $pbs = ($row['price']) * ((100 - $row['sale_pre']) / 100); //// price after sale 
-                    echo '
+
+               while ($row = mysqli_fetch_assoc($result)) {
+                  $x = $row['id'];
+                  if ($row["sale_status"] == 1) {
+                     $pbs = ($row['price']) * ((100 - $row['sale_pre']) / 100);
+                     //// price after sale 
+
+                     echo '
                     <div class="col-sm-6 col-md-3 col-lg-3">
                          <div class="box">
                              <div class="option_container">
                                    <div class="options">
-                             <a href="cart.php" class="option1">
+                             <a href="cart.php?view_id=' . $row['id'] . ' " class="option1">
                                                Add To Cart
                                                </a>
-                                  <a href="viewproduct.php?view_id=' .$row["id"].' " class="option2">
+                                  <a href="viewproduct.php?view_id=' . $row["id"] . ' " class="option2">
                                               View Product
                                              </a>
 
@@ -104,28 +108,26 @@ include("nav.php") ;
                                                  </h5>
                                                </div>
                                            <h6 class="sale">
-                                       <del> <strong> ' . floor($row["price"]) .'  JD'. ' </strong> </del>
+                                       <del> <strong> ' . floor($row["price"]) . '  JD' . ' </strong> </del>
                                       <br>
-                                           <ins> <strong> '  .  $pbs .'  JD'. ' </strong> </ins>
+                                           <ins> <strong> '  .  $pbs . '  JD' . ' </strong> </ins>
                                             </h6>
                                               </div>
                                              </div>
                         
                         ';
-                }
+                  } else {
 
-               else {
 
-               
-                          echo '
+                     echo '
                           <div class="col-sm-6 col-md-3 col-lg-3">
-               <div class="box">
+                  <div class="box">
                   <div class="option_container">
                      <div class="options">
-                        <a href="cart.php" class="option1">
-                        Add To Cart
-                        </a>
-                        <a href="viewproduct.php?view_id=' .$row["id"].' " class="option2">
+                     <a href="cart.php?view_id=' . $row['id'] . ' " class="option1">
+                     Add To Cart
+                     </a>
+                        <a href="viewproduct.php?view_id=' . $row["id"] . ' " class="option2">
                         View Product
                         </a>
                      </div>
@@ -139,7 +141,7 @@ include("nav.php") ;
                      </h5>
                   </div>
                   <h6 class="price">
-                      <strong>' . floor($row["price"]) . '  JD'. '  </strong> 
+                      <strong>' . floor($row["price"]) . '  JD' . '  </strong> 
                        </h6>
                </div>
             </div>
@@ -147,12 +149,10 @@ include("nav.php") ;
                           
                           
                           ';
-                      }
-
+                  }
                }
-               
             }
-           echo "</div>" ;
+            echo "</div>";
            
             ?>
 

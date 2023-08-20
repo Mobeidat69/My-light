@@ -3,11 +3,9 @@
          <div class="container">
             <div class="row">
              
-            <div class="col-md-3 footer-col">
-                  <!-- <img  src="./images/logo-removebg-preview.png" alt=""> -->
-                  </div>
+            
 
-               <div class="col-md-4 footer-col">
+               <div class="col-md-6 footer-col">
                   <div class="footer_detail">
                      <a href="index.php" class="footer-logo">
                      My light
@@ -28,7 +26,7 @@
                   </div>
                </div>
                
-               <div class="col-md-5 footer-col">
+               <div class="col-md-6 footer-col">
                   <div class="footer_contact">
                      <h4>
                         Reach at..

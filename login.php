@@ -4,32 +4,32 @@ include("connect.php");
 
 
 if (isset($_POST['signin'])) {
-   $Email = $_POST['your_name'];    // Update to use 'your_name'
-   $Password = $_POST['your_pass']; // Update to use 'your_pass'
+    $Email = $_POST['your_name'];    // Update to use 'your_name'
+    $Password = $_POST['your_pass']; // Update to use 'your_pass'
 
-   $sql1 = "SELECT * FROM user WHERE email = '$Email';";
-   $result = mysqli_query($conn, $sql1);
+    $sql1 = "SELECT * FROM user WHERE email = '$Email';";
+    $result = mysqli_query($conn, $sql1);
 
-   if ($row = mysqli_fetch_assoc($result)) {
-       $storedPasswordHash = $row['pass'];
-       if (password_verify($Password, $storedPasswordHash) && $row['is_admin'] == 0) {
-           $_SESSION['user_id'] = $row["user_id"]; // Store user ID in session
+    if ($row = mysqli_fetch_assoc($result)) {
+        $storedPasswordHash = $row['pass'];
+        if (password_verify($Password, $storedPasswordHash) && $row['is_admin'] == 0) {
+            $_SESSION['user_id'] = $row["user_id"]; // Store user ID in session
 
-           header('location: index.php'); // Redirect to LandingPage.php
-           exit(); // Important to exit after redirect
-       } else {
-           $wrong1 = '<style type="text/css">
-                   #i11, #one1{
-                       display: inline;
-                   }
-                   </style>';
-           $wrong2 = '<style type="text/css">
-                   #i22, #two2{
-                       display: inline;
-                   }
-                   </style>';
-       }
-   }
+            header('location: index.php'); // Redirect to LandingPage.php
+            exit(); // Important to exit after redirect
+        } else {
+            $wrong1 = '<style type="text/css">
+                    #i11, #one1{
+                        display: inline;
+                    }
+                    </style>';
+            $wrong2 = '<style type="text/css">
+                    #i22, #two2{
+                        display: inline;
+                    }
+                    </style>';
+        }
+    }
 }
 
 
@@ -73,27 +73,38 @@ include("nav.php") ;
 
 ?>
 
+<section class="inner_page_head">
+         <div class="container_fuild">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="full">
+                     <h3>Login</h3>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
 
 
 <div class="main">
    <!-- Sing in  Form -->
    <section class="sign-in">
-            <div class="container">
-                <div class="signin-content">
-                    <div class="signin-image">
+            <div class="container" style="padding-top: 100px;">
+                <div class="row">
+                    <div class="col-4">
                         <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
                         <a href="signup.php" class="signup-image-link">Create an account</a>
                     </div>
 
-                    <div class="signin-form">
-                        <h2 class="form-title">Sign up</h2>
+                    <div class="col-8">
+                        
                         <form method="POST" class="register-form" id="login-form">
                             <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <label for="your_name">name<i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
                             </div>
                             <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <label for="your_pass">password<i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
                             </div>
                           

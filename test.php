@@ -1,3 +1,5 @@
+<!--start view product -->
+
 <?php
 include("connect.php");
 
@@ -40,9 +42,12 @@ include("connect.php");
    <?php
 
    include("nav.php");
-   $view_id = $_GET['view_id'];
+   $viw_id = $_GET['view_id'];
    echo $view_id;
    ?>
+
+
+
 
 
 <section class="product_section layout_padding">
@@ -56,7 +61,84 @@ $resultcheck = mysqli_num_rows($result);
 if ($resultcheck > 0) {
 
  $row = mysqli_fetch_assoc($result) ;
- echo '
+
+
+
+     if ( $row["sale_status"] == 1 ) {
+       $pbs = ($row['price']) * ((100 - $row['sale_pre']) / 100); //// price after sale 
+       echo '
+       <div class="container">
+      <div class="heading_container heading_center">
+         // <h2>
+            Product Details
+         </h2>
+      </div>
+      <div class="row">
+
+         <div class="col-sm-11 col-md-11 col-lg-11">
+            <div class="box">
+               <div class="option_container">
+                  <div class="options">
+                     <a href="cart.php" class="option1">
+                        Add To Cart
+                     </a>
+
+
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-6">
+                     <div class="img-box">
+                        <img src="Images/ProductsImages/'.$row["id"].'.png" alt="">
+                     </div>
+                  </div>
+                  <div class="col-4" style="padding-top: 10px;">
+                     <div class="eedite">
+                        <div class="detail-box">
+                           <h5>
+                           '.$row["name"].'
+                           </h5>
+                        </div>
+                        <div class="detail-box">
+                           <h5>
+                           '.$row["description"].'
+                           </h5>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-2" style="padding-top: 60px;">
+                     <h6 class="sale">
+                        <del> <strong> '.$row["price"].'  JD'.'</strong> </del>
+                        <br>
+                        <ins> <strong> '.$pbs.'  JD'.'</strong> </ins>
+                     </h6>
+                  </div>
+               </div>
+
+
+
+            </div>
+         </div>
+
+
+
+
+      </div>
+
+
+
+
+
+
+   </div>
+           
+           ';
+   }
+
+  else {
+
+  
+             echo '
              <div class="container">
              <div class="heading_container heading_center">
                 <h2>
@@ -85,7 +167,7 @@ if ($resultcheck > 0) {
                          <div class="col-4" style="padding-top: 10px;">
                             <div class="eedite">
                                <div class="detail-box">
-                                  <h4 style="font-weight: 700; color:#f7444e">
+                                  <h4 style="font-weight: bold; color:#f7444e">
                                   '.$row["name"].'
                                   </h4>
                                </div>
@@ -97,24 +179,10 @@ if ($resultcheck > 0) {
                             </div>
                          </div>
                          <div class="col-2" style="padding-top: 60px;">
-                            <h6 class="sale">' ;
-                            if ( $row["sale_status"] == 1 ) {
-                              $pbs = ($row['price']) * ((100 - $row['sale_pre']) / 100);
-                              
-
-                            echo '
+                            <h6 class="sale">
                                <del> <strong> '.$row["price"].'  JD'.'</strong> </del>
                                <br>
-                               <ins> <strong> '.$pbs.'  JD'.'</strong> </ins>
-                               <br>' ;
-                            }
-
-                                else {
-                                 echo '
-                                  <strong> '.$row["price"].'  JD'.'</strong> ' ;
-                                }
-
-                               echo '
+                             
                             </h6>
                          </div>
                       </div>
@@ -142,7 +210,7 @@ if ($resultcheck > 0) {
 
  
   
-
+}
 echo "</section>" ;
 
 ?>
@@ -150,92 +218,17 @@ echo "</section>" ;
 
 
 
-
-<!-- <section class="product_section layout_padding">
-      <div class="container">
-         <div class="heading_container heading_center">
-            <h2>
-               Product Details
-            </h2>
-         </div>
-         <div class="row">
-
-            <div class="col-sm-11 col-md-11 col-lg-11">
-               <div class="box">
-                  <div class="option_container">
-                     <div class="options">
-                        <a href="cart.php" class="option1">
-                           Add To Cart
-                        </a>
-
-
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-6">
-                        <div class="img-box">
-                           <img src="Images/ProductsImages/1.png" alt="">
-                        </div>
-                     </div>
-                     <div class="col-4" style="padding-top: 10px;">
-                        <div class="eedite">
-                           <div class="detail-box">
-                              <h4 style="font-weight: bold; color:#f7444e">
-                                 the naame
-                              </h4>
-                           </div>
-                           <div class="detail-box">
-                              <h5 style="font-weight: 500;">
-                                 dddescription
-                              </h5>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-2" style="padding-top: 60px;">
-                        <h6 class="sale">
-                           <del> <strong> 25 JD</strong> </del>
-                           <br>
-                           <ins> <strong> 20 JD</strong> </ins>
-                        </h6>
-                     </div>
-                  </div>
-
-
-
-               </div>
-            </div>
-
-
-
-
-         </div>
+<!--end view product -->
 
 
 
 
 
 
-      </div>
-   </section> -->
 
 
 
 
-   <?php
 
-   include("footer.php");
 
-   ?>
 
-   <!-- footer section -->
-   <!-- jQery -->
-   <script src="js/jquery-3.4.1.min.js"></script>
-   <!-- popper js -->
-   <script src="js/popper.min.js"></script>
-   <!-- bootstrap js -->
-   <script src="js/bootstrap.js"></script>
-   <!-- custom js -->
-   <script src="js/custom.js"></script>
-</body>
-
-</html>

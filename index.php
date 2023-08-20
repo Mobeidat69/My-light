@@ -71,7 +71,7 @@ include("nav.php") ;
                                  </h1>
                               
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
+                                    <a href="products.php" class="btn1">
                                     Shop Now
                                     </a>
                                  </div>
@@ -94,7 +94,7 @@ include("nav.php") ;
                                  </h1>
                            
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
+                                    <a href="products.php" class="btn1">
                                     Shop Now
                                     </a>
                                  </div>
@@ -110,13 +110,13 @@ include("nav.php") ;
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                    Style Your Home
+                                    Style Home
                                     </span>
                                     <br>
-                                    Soothe Your Soul
+                                    Soothe Soul
                                  </h1>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
+                                    <a href="products.php" class="btn1">
                                     Shop Now
                                     </a>
                                  </div>

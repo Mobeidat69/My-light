@@ -47,9 +47,7 @@ include("nav.php") ;
 
 
    <body class="sub_page">
-      <div class="hero_area">
-        
-      </div>
+      
       <!-- inner page section -->
       <section class="inner_page_head">
          <div class="container_fuild">
