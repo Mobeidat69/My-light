@@ -1196,6 +1196,18 @@ form input[type="submit"]:focus {
   background-size: cover;
 }
 
+
+
+
+.eedite {
+  display: flex;
+  flex-direction: column;
+}
+
+.eedite   .detail-box {
+  width: 50%;
+}
+
 /* http://kute-themes.com/html/boutique/html/index.html
 https://template.hasthemes.com/noraure/noraure/index.html
 https://preview.hasthemes.com/xoss-preview/xoss/index.html */
