@@ -193,7 +193,7 @@ include("nav.php") ;
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="Categories.php" class="option1">
+                           <a href="Categories.php?cat_id=1" class="option1">    <!-- .php?cat_id=.$row["categories_id"]-->
                            pendant lamp
                            </a>
          
@@ -211,10 +211,28 @@ include("nav.php") ;
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="Categories.php" class="option1">
-                           Wall and Mirror Lamps
+                           <a href="Categories.php?cat_id=2" class="option1">
+                           LED Lighting Strips
                            </a>
                           
+                        </div>
+                     </div>
+                     <div class="iamg-box">
+                        <img src="./images/cat6.png " alt="">
+                     </div>
+                     
+                  </div>
+               </div>
+
+
+               <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="box">
+                     <div class="option_container">
+                        <div class="options">
+                           <a href="Categories.php?cat_id=3" class="option1">
+                           Wall and Mirror Lamps
+                           </a>
+                           
                         </div>
                      </div>
                      <div class="iamg-box">
@@ -229,25 +247,7 @@ include("nav.php") ;
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="Categories.php" class="option1">
-                           LED Lighting Strips
-                           </a>
-                           
-                        </div>
-                     </div>
-                     <div class="iamg-box">
-                        <img src="./images/cat6.png" alt="">
-                     </div>
-                     
-                  </div>
-               </div>
-
-
-               <div class="col-sm-6 col-md-6 col-lg-6">
-                  <div class="box">
-                     <div class="option_container">
-                        <div class="options">
-                           <a href="Categories.php" class="option1">
+                           <a href="Categories.php?cat_id=4" class="option1">
                            Floor and Task Lamps
                            </a>
                            
@@ -399,7 +399,7 @@ include("nav.php") ;
 
 
 
-            
+
          </div>
       </section>
       <!-- end product section -->
