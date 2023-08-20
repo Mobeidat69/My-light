@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html>
-   <head>
-      <!-- Basic -->
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <!-- Mobile Metas -->
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <!-- Site Metas -->
-      <meta name="keywords" content="" />
-      <meta name="description" content="" />
-      <meta name="author" content="" />
-      <link rel="shortcut icon" href="images/favicon.png" type="">
-      <title>index - Mylight</title>
-      <!-- bootstrap core css -->
-      <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-      <!-- font awesome style -->
-      <link href="css/font-awesome.min.css" rel="stylesheet" />
-      <!-- Custom styles for this template -->
-      <link href="css/style.css" rel="stylesheet" />
-      <!-- responsive style -->
-      <link href="css/responsive.css" rel="stylesheet" />
-      <script src="https://kit.fontawesome.com/d9f213cfa1.js" crossorigin="anonymous"></script>
-   </head>
-   <body>
+
        <!-- header section strats -->
        <header class="header_section">
             <div class="container">
@@ -47,10 +23,10 @@
                            <a class="nav-link" href="contactus.php">Contact Us</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="contact.html">Login</a>
+                           <a class="nav-link" href="login.php">Login</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="contact.html">Register</a>
+                           <a class="nav-link" href="register.php">Register</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="#">

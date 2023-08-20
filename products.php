@@ -1,8 +1,45 @@
 <?php
+include("connect.php"); 
+
+
+
+?>
+<!DOCTYPE html>
+<html>
+   <head>
+      <!-- Basic -->
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <!-- Mobile Metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <!-- Site Metas -->
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <link rel="shortcut icon" href="images/half-logo.png" type="">
+      <title> Mylight</title>
+      <!-- bootstrap core css -->
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+      <!-- font awesome style -->
+      <link href="css/font-awesome.min.css" rel="stylesheet" />
+      <!-- Custom styles for this template -->
+      <link href="css/style.css" rel="stylesheet" />
+      <!-- Css styles for login -->
+      <link href="css/login.css" rel="stylesheet" />
+      <!-- Css styles for register -->
+      <link href="css/register.css" rel="stylesheet" />
+      <!-- responsive style -->
+      <link href="css/responsive.css" rel="stylesheet" />
+      <script src="https://kit.fontawesome.com/d9f213cfa1.js" crossorigin="anonymous"></script>
+   </head>
+   <body>
+
+
+
+
+<?php
 
 include("nav.php") ;
-include("connect.php") ;
-
 ?>
 
   <!-- inner page section -->
@@ -43,7 +80,7 @@ include("connect.php") ;
             if ($resultcheck > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                   if ( $row["sale_status"] == 1 ) {
-                    $pbs = floor(($row['price']) / ((100 - $row['sale_pre']) / 100)); //// price after sale 
+                    $pbs = ($row['price']) * ((100 - $row['sale_pre']) / 100); //// price after sale 
                     echo '
                     <div class="col-sm-6 col-md-3 col-lg-3">
                          <div class="box">
@@ -52,7 +89,7 @@ include("connect.php") ;
                              <a href="cart.php" class="option1">
                                                Add To Cart
                                                </a>
-                                  <a href="viewproduct.php" class="option2">
+                                  <a href="viewproduct.php?view_id=' .$row["id"].' " class="option2">
                                               View Product
                                              </a>
 
@@ -67,9 +104,9 @@ include("connect.php") ;
                                                  </h5>
                                                </div>
                                            <h6 class="sale">
-                                       <del> <strong> ' . $row["price"] . ' </strong> </del>
+                                       <del> <strong> ' . floor($row["price"]) .'  JD'. ' </strong> </del>
                                       <br>
-                                           <ins> <strong> '  .  $pbs . ' </strong> </ins>
+                                           <ins> <strong> '  .  $pbs .'  JD'. ' </strong> </ins>
                                             </h6>
                                               </div>
                                              </div>
@@ -88,7 +125,7 @@ include("connect.php") ;
                         <a href="cart.php" class="option1">
                         Add To Cart
                         </a>
-                        <a href="viewproduct.php" class="option2">
+                        <a href="viewproduct.php?view_id=' .$row["id"].' " class="option2">
                         View Product
                         </a>
                      </div>
@@ -102,7 +139,7 @@ include("connect.php") ;
                      </h5>
                   </div>
                   <h6 class="price">
-                      <strong>' . $row["price"] . '  </strong> 
+                      <strong>' . floor($row["price"]) . '  JD'. '  </strong> 
                        </h6>
                </div>
             </div>
@@ -119,7 +156,9 @@ include("connect.php") ;
            
             ?>
 
-
+</section>
+</div>
+</div>
 
 
 
@@ -404,3 +443,16 @@ include("connect.php") ;
 include("footer.php") ;
 
 ?>
+
+
+<!-- footer section -->
+      <!-- jQery -->
+      <script src="js/jquery-3.4.1.min.js"></script>
+      <!-- popper js -->
+      <script src="js/popper.min.js"></script>
+      <!-- bootstrap js -->
+      <script src="js/bootstrap.js"></script>
+      <!-- custom js -->
+      <script src="js/custom.js"></script>
+   </body>
+</html>
