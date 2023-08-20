@@ -17,7 +17,7 @@
                            <a class="nav-link" href="products.php">Products</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="blog_list.html">About Us</a>
+                           <a class="nav-link" href="aboutus.php">About Us</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="contactus.php">Contact Us</a>
@@ -34,9 +34,9 @@
                            </a>
                         </li>
                         <form class="form-inline">
-                           <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                           <a style="color: black; text-decoration: none;" onmouseover="this.style.color='red'; this.style.textDecoration='underline';" onmouseout="this.style.color='black'; this.style.textDecoration='none'; " href="cart.php">
                            <i class="fa-solid fa-cart-shopping fa-xl"></i>
-                           </button>
+                           </a>
                         </form>
                      </ul>
                   </div>

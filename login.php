@@ -1,6 +1,36 @@
 <?php
+session_start();
 include("connect.php"); 
 
+
+if (isset($_POST['signin'])) {
+   $Email = $_POST['your_name'];    // Update to use 'your_name'
+   $Password = $_POST['your_pass']; // Update to use 'your_pass'
+
+   $sql1 = "SELECT * FROM user WHERE email = '$Email';";
+   $result = mysqli_query($conn, $sql1);
+
+   if ($row = mysqli_fetch_assoc($result)) {
+       $storedPasswordHash = $row['pass'];
+       if (password_verify($Password, $storedPasswordHash) && $row['is_admin'] == 0) {
+           $_SESSION['user_id'] = $row["user_id"]; // Store user ID in session
+
+           header('location: index.php'); // Redirect to LandingPage.php
+           exit(); // Important to exit after redirect
+       } else {
+           $wrong1 = '<style type="text/css">
+                   #i11, #one1{
+                       display: inline;
+                   }
+                   </style>';
+           $wrong2 = '<style type="text/css">
+                   #i22, #two2{
+                       display: inline;
+                   }
+                   </style>';
+       }
+   }
+}
 
 
 ?>
@@ -24,13 +54,14 @@ include("connect.php");
       <link href="css/font-awesome.min.css" rel="stylesheet" />
       <!-- Custom styles for this template -->
       <link href="css/style.css" rel="stylesheet" />
-      <!-- Css styles for login -->
-      <link href="css/login.css" rel="stylesheet" />
-      <!-- Css styles for register -->
-      <link href="css/register.css" rel="stylesheet" />
+     
+      
       <!-- responsive style -->
       <link href="css/responsive.css" rel="stylesheet" />
       <script src="https://kit.fontawesome.com/d9f213cfa1.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+
    </head>
    <body>
     
@@ -44,7 +75,39 @@ include("nav.php") ;
 
 
 
+<div class="main">
+   <!-- Sing in  Form -->
+   <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
+                        <a href="signup.php" class="signup-image-link">Create an account</a>
+                    </div>
 
+                    <div class="signin-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form method="POST" class="register-form" id="login-form">
+                            <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                            </div>
+                          
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
 
 
 

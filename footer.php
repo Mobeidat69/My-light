@@ -9,7 +9,7 @@
 
                <div class="col-md-4 footer-col">
                   <div class="footer_detail">
-                     <a href="index.html" class="footer-logo">
+                     <a href="index.php" class="footer-logo">
                      My light
                      </a>
                      <p>
