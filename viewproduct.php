@@ -82,7 +82,7 @@ if ($resultcheck > 0) {
                                <img src="Images/ProductsImages/'.$row["id"].'.png" alt="">
                             </div>
                          </div>
-                         <div class="col-4" style="padding-top: 10px;">
+                         <div class="col-5" style="padding-top: 10px;padding-left:60px;">
                             <div class="eedite">
                                <div class="detail-box">
                                   <h4 style="font-weight: 700; color:#f7444e">
@@ -96,7 +96,7 @@ if ($resultcheck > 0) {
                                </div>
                             </div>
                          </div>
-                         <div class="col-2" style="padding-top: 60px;">
+                         <div class="col-1" style="padding-top: 60px;">
                             <h6 class="sale">' ;
                             if ( $row["sale_status"] == 1 ) {
                               $pbs = ($row['price']) * ((100 - $row['sale_pre']) / 100);
