@@ -12,7 +12,16 @@ if (isset($_SESSION['user_id'])) {
        }
       //  echo '<h1>'.$quan_sum.'</h1>';
    }
-   
+    echo'
+    <style>
+    .hide{
+      display: none;
+    }
+
+    .show{
+      display: list-item;    }
+    </style>
+    ';
 
 
 }
@@ -42,11 +51,14 @@ if (isset($_SESSION['user_id'])) {
                         <li class="nav-item">
                            <a class="nav-link" href="contactus.php">Contact Us</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item hide" >
                            <a class="nav-link" href="login.php">Login</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item hide" >
                            <a class="nav-link" href="register.php">Register</a>
+                        </li>
+                        <li class="nav-item show"  >
+                           <a class="nav-link" href="logout.php">Logout</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="#">

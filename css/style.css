@@ -1166,7 +1166,9 @@ form input[type="submit"]:focus {
   -webkit-transition: all .3s;
   transition: all .3s;
 }
-
+.show{
+  display: none;
+}
 
 
 

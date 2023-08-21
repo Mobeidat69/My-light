@@ -6,6 +6,11 @@ include("nav.php");
 if (isset($_SESSION['user_id'])) {
     $user_id =  $_SESSION['user_id'];
 }
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to the login page if user is not logged in
+    header("Location: login.php");
+    exit;
+}
 $cart_query = "SELECT products.name, cart.quantity, products.price, cart.product_id
                FROM cart
                INNER JOIN products ON cart.product_id = products.id

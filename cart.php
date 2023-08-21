@@ -7,7 +7,11 @@ include("nav.php");
 if (isset($_SESSION['user_id'])) {
     $user_id =  $_SESSION['user_id'];
 }
-
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to the login page if user is not logged in
+    header("Location: login.php");
+    exit;
+}
 // Check if the "Update Quantity" form is submitted
 if (isset($_POST['update_quantity'])) {
     // Get the product ID and new quantity from the form
