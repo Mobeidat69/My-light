@@ -15,7 +15,7 @@ if (isset($_POST['signin'])) {
         if (password_verify($Password, $storedPasswordHash) && $row['is_admin'] == 0) {
             $_SESSION['user_id'] = $row["user_id"]; // Store user ID in session
 
-            header('location: index.php?err=true'); // Redirect to LandingPage.php
+            header('location: index.php'); // Redirect to LandingPage.php
             exit(); // Important to exit after redirect
         } else {
             $wrong1 = '<style type="text/css">
@@ -30,7 +30,6 @@ if (isset($_POST['signin'])) {
                     </style>';
         }
     }
-    header("Location: login.php?err=true");
 }
 
 
@@ -100,9 +99,6 @@ include("nav.php") ;
                     <div class="col-8">
                         
                         <form method="POST" class="register-form" id="login-form">
-                        <?php if (isset($_GET['err'])) { ?>
-                          <div class="alert alert-danger text-center"><?php echo "Login failed! Invalid email-id or password!"; ?></div>
-                             <?php } ?>
                             <div class="form-group">
                                 <label for="your_name">name<i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
