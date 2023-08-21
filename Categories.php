@@ -144,7 +144,7 @@ $cat_id = $_GET['cat_id'];
                      <input type="hidden" value="'.$row["id"].'" name="proid">
                       <input type="submit" class="btn rounded-pill option1" value="Add to Cart" name="addcart">
                    </form>
-                        <a href="viewproduct.php" class="option2">
+                        <a href="viewproduct.php?view_id=' . $row["id"] . '" class="option2">
                         View Product
                         </a>
                      </div>
