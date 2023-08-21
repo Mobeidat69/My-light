@@ -2,7 +2,33 @@
 session_start();
 include("connect.php");
 
+//////////////////add this code in everywhere has "add to cart button"/////////////////////
+if (isset($_POST['addcart'])) {
+   if (!isset($_SESSION['user_id'])) {
+      // Redirect to the login page if user is not logged in
+      header("Location: login.php");
+      exit;
+  }
+   // Get the product ID from the submitted form
+   $product_id = $_POST['proid'];
 
+   // Check if the product is already in the user's cart
+   $check_query = "SELECT * FROM cart WHERE user_id = $userid AND product_id = $product_id";
+   $check_result = mysqli_query($conn, $check_query);
+
+   if (mysqli_num_rows($check_result) > 0) {
+       // Product already in the cart, update quantity
+       $update_query = "UPDATE cart SET quantity = quantity + 1 WHERE user_id = $userid AND product_id = $product_id";
+       mysqli_query($conn, $update_query);
+   } else {
+       // Product not in the cart, insert it
+       $insert_query = "INSERT INTO cart (user_id, product_id, quantity) VALUES ($userid, $product_id, 1)";
+       mysqli_query($conn, $insert_query);
+   }
+
+  
+}
+/////////////////////////////////////////////////////////////////
 
 if (isset($_SESSION['user_id'])) {
    $userid = $_SESSION['user_id'];
@@ -81,33 +107,7 @@ include("nav.php");?>
             <?php
 
 
-//////////////////add this code in everywhere has "add to cart button"/////////////////////
-if (isset($_POST['addcart'])) {
-   if (!isset($_SESSION['user_id'])) {
-      // Redirect to the login page if user is not logged in
-      header("Location: login.php");
-      exit;
-  }
-   // Get the product ID from the submitted form
-   $product_id = $_POST['proid'];
 
-   // Check if the product is already in the user's cart
-   $check_query = "SELECT * FROM cart WHERE user_id = $userid AND product_id = $product_id";
-   $check_result = mysqli_query($conn, $check_query);
-
-   if (mysqli_num_rows($check_result) > 0) {
-       // Product already in the cart, update quantity
-       $update_query = "UPDATE cart SET quantity = quantity + 1 WHERE user_id = $userid AND product_id = $product_id";
-       mysqli_query($conn, $update_query);
-   } else {
-       // Product not in the cart, insert it
-       $insert_query = "INSERT INTO cart (user_id, product_id, quantity) VALUES ($userid, $product_id, 1)";
-       mysqli_query($conn, $insert_query);
-   }
-
-  
-}
-/////////////////////////////////////////////////////////////////
 
 
             $query = "SELECT * FROM products INNER JOIN categories WHERE products.category_id = categories.category_id ;";
