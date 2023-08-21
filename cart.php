@@ -17,11 +17,14 @@ if (isset($_POST['update_quantity'])) {
     // Update the quantity in the cart table for the specified product and user
     $update_query = "UPDATE cart SET quantity = $new_quantity WHERE user_id = $user_id AND product_id = $product_id";
     mysqli_query($conn, $update_query);
+    header("Location: cart.php");
 }
 if (isset($_POST['delete'])) {
     $product_id = $_POST['product_id'];
     $delete_query = "DELETE FROM cart WHERE user_id = $user_id AND product_id = $product_id ";
     mysqli_query($conn, $delete_query);
+    header("Location: cart.php");
+    // header('')
 }
 
 // Fetch the user's cart items from the database

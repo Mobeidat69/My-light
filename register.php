@@ -8,13 +8,13 @@ if (isset($_POST['submit'])) {
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $mobile = $_POST['mobile'];
-    $dobDay = $_POST['dob-day'];
-    $dobMonth = $_POST['dob-month'];
-    $dobYear = $_POST['dob-year'];
+    // $dobDay = $_POST['dob-day'];
+    // $dobMonth = $_POST['dob-month'];
+    // $dobYear = $_POST['dob-year'];
     $email = $_POST['email'];
     $pass = $_POST['pass'];
     $Confirm = $_POST['re_pass'];
-    $date = "$dobYear-$dobMonth-$dobDay";
+    // $date = "$dobYear-$dobMonth-$dobDay";
 
     
 
@@ -49,16 +49,16 @@ if (isset($_POST['submit'])) {
 
 
 
-    if ((floor((time() - strtotime($date)) / 31556926)) > 16) {
-        $checkdate = true;
-    } else {
-        $d = '<style type="text/css">
-        #i6, #six {
-            display: inline;
-        }
-        </style>';
-        $checkdate = false;
-    }
+    // if ((floor((time() - strtotime($date)) / 31556926)) > 16) {
+    //     $checkdate = true;
+    // } else {
+    //     $d = '<style type="text/css">
+    //     #i6, #six {
+    //         display: inline;
+    //     }
+    //     </style>';
+    //     $checkdate = false;
+    // }
 
 
     $filter2 = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/";
@@ -166,7 +166,7 @@ if (isset($_POST['submit'])) {
         $checkco = true;
     }
 
-    if ($checkFN && $checkMobile && $checkEmaile && $checkdate && $checkpass && $checkco) {
+    if ($checkFN && $checkMobile && $checkEmaile && $checkpass && $checkco) {
 
         $reg = '<style type="text/css">
   #reg, .pop{
@@ -175,8 +175,8 @@ if (isset($_POST['submit'])) {
   </style>';
 
   $passHash = password_hash($pass, PASSWORD_DEFAULT);
-  $sql = "INSERT INTO user (first_name, last_name, email,pass,mobile,datee ) 
-VALUES ('$fname', '$lname', '$email', '$passHash', '$mobile','$date')";
+  $sql = "INSERT INTO user (first_name, last_name, email,pass,mobile ) 
+VALUES ('$fname', '$lname', '$email', '$passHash', '$mobile')";
 
 
         if (mysqli_query($conn, $sql)) {
@@ -188,9 +188,9 @@ VALUES ('$fname', '$lname', '$email', '$passHash', '$mobile','$date')";
         mysqli_close($conn);
 
         echo "<script language='javascript'>
-setTimeout(() => {
+
     window.location.href = 'login.php'; 
- }, 3000);
+
 </script>";
     }
 

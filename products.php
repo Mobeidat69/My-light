@@ -2,7 +2,12 @@
 session_start();
 include("connect.php");
 
+
+
 //////////////////add this code in everywhere has "add to cart button"/////////////////////
+if (isset($_SESSION['user_id'])) {
+   $userid = $_SESSION['user_id'];
+}
 if (isset($_POST['addcart'])) {
    if (!isset($_SESSION['user_id'])) {
       // Redirect to the login page if user is not logged in
@@ -29,10 +34,6 @@ if (isset($_POST['addcart'])) {
   
 }
 /////////////////////////////////////////////////////////////////
-
-if (isset($_SESSION['user_id'])) {
-   $userid = $_SESSION['user_id'];
-}
 
 
 ?>
