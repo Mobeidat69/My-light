@@ -103,7 +103,7 @@ $total_price = 0;
                                 <div class="d-flex m-3 ">
                                 <input class="mr-2 " type="number" name="new_quantity" value="' . $row["quantity"] . '">
                                 <input class="p-2 " type="submit" name="update_quantity" value="Update" class="btn">
-                                <button type="submit" name="delete"><i class="fa-solid fa-trash"></i></button>
+                                <button type="submit" class="btn btn-danger btn-lg ms-4" name="delete"><i class="fa-solid fa-trash"></i></button>
                                 </div>
                             </form>
                           </td>';
