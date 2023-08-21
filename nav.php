@@ -1,4 +1,24 @@
+<?php
+if (isset($_SESSION['user_id'])) {
+   $user_id =  $_SESSION['user_id'];
+   $querypop="SELECT * FROM cart  WHERE   user_id=$user_id";
+   $resultpop= mysqli_query($conn, $querypop);
+   $resultcheckpop = mysqli_num_rows($resultpop);
+   
+   $quan_sum=0;
+   if($resultcheckpop > 0){
+       while($rowpop = mysqli_fetch_assoc($resultpop)){
+           $quan_sum+= $rowpop['quantity'];
+       }
+      //  echo '<h1>'.$quan_sum.'</h1>';
+   }
+   
 
+
+}
+
+
+?>
        <!-- header section strats -->
        <header class="header_section">
             <div class="container">
@@ -33,7 +53,7 @@
                               
                            </a>
                         </li>
-                        <form class="form-inline">
+                       <span style="font-weight: bold;" class="text-danger"><?php if(isset($quan_sum)) echo $quan_sum;?> </span><form class="form-inline">
                            <a style="color: black; text-decoration: none;" onmouseover="this.style.color='red'; this.style.textDecoration='underline';" onmouseout="this.style.color='black'; this.style.textDecoration='none'; " href="cart.php">
                            <i class="fa-solid fa-cart-shopping fa-xl"></i>
                            </a>

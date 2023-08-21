@@ -275,7 +275,7 @@ include("nav.php") ;
                             <input type="email" name="email" id="email" placeholder="Your Email" required/>
                        
                             <label for="mobile">Mobile<i class="zmdi zmdi-phone"></i></label>
-                            <input type="tel" name="mobile" id="mobile" placeholder="Your Mobile" required pattern="[0-9]{14}"/>
+                            <input type="number" name="mobile" id="mobile" placeholder="Your Mobile" required pattern="[0-9]{14}"/>
                        
                             <label for="pass">Password<i class="zmdi zmdi-lock"></i></label>
                             <input type="password" name="pass" id="pass" placeholder="Password" required/>

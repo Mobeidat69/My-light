@@ -1,31 +1,36 @@
 <?php
+
 require 'connect.php';
+
 session_start();
-// $id= $_SESSION["user_id"];
-$id = 1;
-$e = 0;
-$arr_q = [];
-if (isset($_GET['pro_id'])) {
-    $pro_id = $_GET['pro_id'];
-}
-if (isset( $_SESSION['user_id'])) {
-    $id =  $_SESSION['user_id'];
+include("nav.php");
+if (isset($_SESSION['user_id'])) {
+    $user_id =  $_SESSION['user_id'];
 }
 
-$query = "SELECT * FROM products INNER JOIN categories ON products.category_id = categories.category_id WHERE products.id='$pro_id';";
-$r = mysqli_query($conn, $query);
-$s = mysqli_num_rows($r);
+// Check if the "Update Quantity" form is submitted
+if (isset($_POST['update_quantity'])) {
+    // Get the product ID and new quantity from the form
+    $product_id = $_POST['product_id'];
+    $new_quantity = $_POST['new_quantity'];
 
-if (isset($_POST['checkout'])) {
-    header("location:checkout.php");
+    // Update the quantity in the cart table for the specified product and user
+    $update_query = "UPDATE cart SET quantity = $new_quantity WHERE user_id = $user_id AND product_id = $product_id";
+    mysqli_query($conn, $update_query);
+}
+if (isset($_POST['delete'])) {
+    $product_id = $_POST['product_id'];
+    $delete_query = "DELETE FROM cart WHERE user_id = $user_id AND product_id = $product_id ";
+    mysqli_query($conn, $delete_query);
 }
 
-$homepath = '../landingpage.php?id=' . $id;
-$shoppath = '../ProductsPage.php?id=' . $id;
-$categorypath = '../CategoriesPage.php?id=' . $id . '&';
-$cartpath = '#';
-$about = '../aboutUS.php?id=' . $id;
-$contact = '../contactUS.php?id=' . $id;
+// Fetch the user's cart items from the database
+$cart_query = "SELECT cart.product_id, products.name, products.image, products.price, cart.quantity
+              FROM cart
+              INNER JOIN products ON cart.product_id = products.id
+              WHERE cart.user_id = $user_id";
+$cart_result = mysqli_query($conn, $cart_query);
+$total_price = 0;
 
 ?>
 
@@ -62,94 +67,63 @@ $contact = '../contactUS.php?id=' . $id;
 <body>
 
 
-
-    <?php
-
-    include("nav.php");
-
-    ?>
-
-
-
-
-    <div class="container-cart" style="  background-color: white;
-                                         width: 70rem;
-                                         margin: 30px auto;
-                                         padding: 30px 60px;">
-
-        <div class="content-cart" style="  background: #dae0e065;
-                                           display: grid;
-                                           
-                                           ">
-
-            <h1 style="justify-content: center;
-                    display:grid;
-                    align-items: center;"> CART </h1> <br> <br>
-        <?php
-
-?>
+   <div class="container-cart" style="background-color: white; width: 70rem; margin: 30px auto; padding: 30px 60px;">
+        <div class="content-cart" style=" display: grid;">
+            <h1 style="justify-content: center; display: grid; align-items: center;"> CART </h1>
+            <br> <br>
             <table class="table-cart" style="border: 2px solid #f7444e;">
                 <tr>
-                <th style="border: 2px solid #f7444e;">img</th>
-                    <th style="border: 2px solid #f7444e;">PRODUCTS</th>
-                    <th style="border: 2px solid #f7444e;">PRICE</th>
-                    <th style="border: 2px solid #f7444e;">QUANTITY</th>
-                    <th style="border: 2px solid #f7444e;">SUBTOTAL</th>
+                    <th class='p-2' style="border-bottom: 2px solid #f7444e;">img</th>
+                    <th class='p-2' style="border-bottom: 2px solid #f7444e;">PRODUCTS</th>
+                    <th class='p-2' style="border-bottom: 2px solid #f7444e;">PRICE</th>
+                    <th class='p-2' style="border-bottom: 2px solid #f7444e;">QUANTITY</th>
+                    <th class='p-2' style="border-bottom: 2px solid #f7444e;">SUBTOTAL</th>
+                  
                 </tr>
-
                 <?php
-                
-                $sum = 0;
-                if ($s > 0) {
-                    while ($row = mysqli_fetch_assoc($r)) {
-                       
-                        echo '<tr>
-                        <td style="position: relative;">
-                         <div style="left: 0; margin: auto; display: flex; justify-content: space-around; align-items: center; width: 200px;">
-                            <img src="'.$row['image'].'" width="50px" alt="">
-                        </div>
-                       </td>
-                <td style="border: 2px solid #f7444e;">' . $row['name'] . '</td>
-                <td style="border: 2px solid #f7444e;">$' . $row['price'] . '</td>
-                <td>
-                    <input type="hidden" value="' . $row['id'] . '" name="product_id' . $row['id'] . '">
-                    <input type="number" class="num" min="1" value="' . '" name="quan' . $row['id'] . '" id="">
-                </td>
-                <td style="border: 2px solid #f7444e;">$' . ($row['price'] ) . '</td>
-            </tr>';
-
-                        // Calculate the total
-                        $sum += ($row['price'] );
-                    }
-                } else {
-                    echo '<tr><td colspan="4">No products found</td></tr>';
+                while ($row = mysqli_fetch_assoc($cart_result)) {
+                    echo '<tr>';
+             
+                    echo '<td><div style="left: 0; margin: auto; display: flex; justify-content: space-around; align-items: center; width: 200px;">
+                    <img src="'.$row['image'].'" width="50px" alt="Product Image">
+                </div></td>';
+                    echo '<td>' . $row["name"] . '</td>';
+                    echo '<td>$' . $row["price"] . '</td>';
+                    // Create a form for updating quantity
+                    echo '<td>
+                            <form method="post">
+                                <input type="hidden" name="product_id" value="' . $row["product_id"] . '">
+                                <div class="d-flex m-3 ">
+                                <input class="mr-2 " type="number" name="new_quantity" value="' . $row["quantity"] . '">
+                                <input class="p-2 " type="submit" name="update_quantity" value="Update" class="btn">
+                                <button type="submit" name="delete"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </form>
+                          </td>';
+                          $subtotal = $row["price"] * $row["quantity"];
+                    echo '<td>$' .$subtotal  . '</td>';
+                    echo '</tr>';
+                    // Add the subtotal to the total price
+                    $total_price += $subtotal;
+                    
                 }
-                $_SESSION["total"] = $sum;
                 ?>
-
             </table>
-
-        
-
-
-
-            <br> <br> <br>
-
+            <br> <br>
             <div class="total" style="margin-left: 5rem;">
-                <h3>CART TOTAL: $<?php echo $sum; ?></h3>
-                <input type="submit" name="checkout" value="Checkout" class="change" style="background-color: #f7444e;
-                                                                                color: white;
-                                                                                width: 9rem;
-                                                                                height: 3rem;
-                                                                                border-radius: 2rem;
-                                                                                border: none;
-                                                                                cursor: pointer;
-                                                                                font-weight: bold;
-                                                                                font-size: 16px;">
+                <h3 class="mb-4">CART TOTAL: $<?php echo $total_price; $_SESSION['total']= $total_price;?> </h3>
+                <div>
+                <a href='checkout.php' class="option1 "  >Checkout </a> </div>
+
             </div>
+            <br> <br>
+        </div>
+    </div>
 
-            <br> <br> <br>
 
+
+
+                                     
 
 </body>
 </div>

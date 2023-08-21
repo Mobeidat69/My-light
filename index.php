@@ -1,7 +1,7 @@
 
 <?php
 include("connect.php"); 
-
+session_start();
 
 
 ?>
@@ -292,6 +292,7 @@ include("nav.php") ;
                      </div>
                      <div class="iamg-box">
                         <img src="./images/cat3.png" alt="">
+                        
                      </div>
                      
                   </div>
