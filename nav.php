@@ -45,9 +45,9 @@ if (isset($_SESSION['user_id'])) {
                         <li class="nav-item">
                            <a class="nav-link" href="products.php">Products</a>
                         </li>
-                        <!-- <li class="nav-item">
+                        <li class="nav-item">
                            <a class="nav-link" href="aboutus.php">About Us</a>
-                        </li> -->
+                        </li>
                         <li class="nav-item">
                            <a class="nav-link" href="contactus.php">Contact Us</a>
                         </li>

@@ -42,7 +42,7 @@ session_start();
 
 include("nav.php");
 $cat_id = $_GET['cat_id'];
-echo $cat_id;
+// echo $cat_id;
 ?>
 
 

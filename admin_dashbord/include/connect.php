@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db= 'php_ecommerce';
+$db= 'my-light';
 
 
 $conn= mysqli_connect($servername, $username, $password,$db);
