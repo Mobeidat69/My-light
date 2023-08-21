@@ -1,9 +1,43 @@
 <?php
+session_start();
 include("connect.php");
 
 
 
-session_start();
+//////////////////add this code in everywhere has "add to cart button"/////////////////////
+if (isset($_SESSION['user_id'])) {
+   $userid = $_SESSION['user_id'];
+}
+if (isset($_POST['addcart'])) {
+   if (!isset($_SESSION['user_id'])) {
+      // Redirect to the login page if user is not logged in
+      header("Location: login.php");
+      exit;
+  }
+   // Get the product ID from the submitted form
+   $product_id = $_POST['proid'];
+
+   // Check if the product is already in the user's cart
+   $check_query = "SELECT * FROM cart WHERE user_id = $userid AND product_id = $product_id";
+   $check_result = mysqli_query($conn, $check_query);
+
+   if (mysqli_num_rows($check_result) > 0) {
+       // Product already in the cart, update quantity
+       $update_query = "UPDATE cart SET quantity = quantity + 1 WHERE user_id = $userid AND product_id = $product_id";
+       mysqli_query($conn, $update_query);
+   } else {
+       // Product not in the cart, insert it
+       $insert_query = "INSERT INTO cart (user_id, product_id, quantity) VALUES ($userid, $product_id, 1)";
+       mysqli_query($conn, $insert_query);
+   }
+
+  
+}
+/////////////////////////////////////////////////////////////////
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,9 +104,10 @@ if ($resultcheck > 0) {
                    <div class="box">
                       <div class="option_container">
                          <div class="options">
-                            <a href="cart.php" class="option1">
-                               Add To Cart
-                            </a>
+                         <form method="post">
+                         <input type="hidden" value="'.$row["id"].'" name="proid">
+                          <input type="submit" class="btn rounded-pill option1" value="Add to Cart" name="addcart">
+                       </form>
     
     
                          </div>
