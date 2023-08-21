@@ -144,7 +144,7 @@ session_start();
               <!-- Team item-->
               <div class="col-xl-4 col-sm-6 mb-5">
                 <div class="bg-white rounded shadow-sm py-5 px-4"><img src="./images/Somaiah.jpeg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-                  <h5 class="mb-0">Somaiah Yaseen</h5><span class="small text-uppercase text-muted">CEO - Founder <br> Scrum Master </span>
+                  <h5 class="mb-0">Somaiah Al-Yaseen</h5><span class="small text-uppercase text-muted">CEO - Founder <br> Scrum Master </span>
                   <ul class="social mb-0 list-inline mt-3">
 
                     <li class="list-inline-item"><a href="https://github.com/Somaiah-Al-yaseen" target="_blank" class="social-link"><i class="fa fa-github"></i></a></li>
